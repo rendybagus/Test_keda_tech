@@ -19,6 +19,7 @@ class MasterdataMaterial(models.Model):
         ('product_ready', 'Product Ready'),
         ('done', 'Done')
     ], string='Status', default='draft')
+    po_id = fields.Many2one('purchase.order', string='Purchase Order')
 
     @api.constrains('buy_price')
     def _check_buy_price(self):
@@ -47,11 +48,14 @@ class MasterdataMaterial(models.Model):
                 'product_id': self.env['product.product'].search([('barcode', '=', self.code)], limit=1).id,
             })]
         })
-        self.write({'state': 'done'})
+        self.write({'state': 'done', 'po_id': po_id.id})
+        return self.action_view_po()
+        
+    def action_view_po(self):
         return {
             'name': 'Purchase Order',
             'view_mode': 'form',
             'res_model': 'purchase.order',
             'type': 'ir.actions.act_window',
-            'res_id': po_id.id,
+            'res_id': self.po_id.id,
         }

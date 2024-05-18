@@ -23,6 +23,7 @@
                 <field name="buy_price"/>
                 <field name="supplier_id"/>
                 <field name="state"/>
+                <field name="po_id" invisible="1"/>
             </tree>
         </field>
     </record>
@@ -39,6 +40,15 @@
                     <field name="state" widget="statusbar" nolabel="1"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" 
+                            name="action_view_po"
+                            class="oe_stat_button" 
+                            icon="fa-shopping-cart"
+                            attrs= "{'invisible': [('po_id', '=', False)]}"
+                            string="View Purchase Order">
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <field name="code"/>
@@ -48,6 +58,7 @@
                         <group>
                             <field name="buy_price"/>
                             <field name="supplier_id"/>
+                            <field name="po_id" invisible="1"/>
                         </group>
                     </group>
                 </sheet>
