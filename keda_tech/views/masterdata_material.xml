@@ -78,6 +78,12 @@
                 <filter name="filter_material_type_jeans" string="Material Fabric" domain="[('type', '=', 'fabric')]"/>
                 <filter name="filter_material_type_jeans" string="Material Jeans" domain="[('type', '=', 'jeans')]"/>
                 <filter name="filter_material_type_jeans" string="Material Cotton" domain="[('type', '=', 'cotton')]"/>
+                <separator/>
+                <group string="Group By">
+                    <filter name="group_by_type" string="Type" context="{'group_by': 'type'}"/>
+                    <filter name="group_by_supplier" string="Supplier" context="{'group_by': 'supplier_id'}"/>
+                    <filter name="group_by_state" string="State" context="{'group_by': 'state'}"/>
+                </group>
             </search>
         </field>
     </record>
