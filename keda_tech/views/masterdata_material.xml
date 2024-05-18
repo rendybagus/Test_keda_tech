@@ -42,5 +42,21 @@
             </form>
         </field>
     </record>
+
+    <!-- Search View -->
+    <record id="view_material_search" model="ir.ui.view">
+        <field name="name">material.search</field>
+        <field name="model">masterdata.material</field>
+        <field name="arch" type="xml">
+            <search string="Search Materials">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="type"/>
+                <filter name="filter_material_type_jeans" string="Material Fabric" domain="[('type', '=', 'fabric')]"/>
+                <filter name="filter_material_type_jeans" string="Material Jeans" domain="[('type', '=', 'jeans')]"/>
+                <filter name="filter_material_type_jeans" string="Material Cotton" domain="[('type', '=', 'cotton')]"/>
+            </search>
+        </field>
+    </record>
 </odoo>
 
