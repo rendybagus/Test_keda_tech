@@ -22,6 +22,7 @@
                 <field name="type"/>
                 <field name="buy_price"/>
                 <field name="supplier_id"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -32,13 +33,24 @@
         <field name="model">masterdata.material</field>
         <field name="arch" type="xml">
             <form string="Material">
-                <group>
-                    <field name="code"/>
-                    <field name="name"/>
-                    <field name="type"/>
-                    <field name="buy_price"/>
-                    <field name="supplier_id"/>
-                </group>
+                <header>
+                    <button name="action_check_material" string="Check Product Material" type="object" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <button name="action_create_po" string="Create Purchase Order" type="object" attrs="{'invisible': [('state', '!=', 'product_ready')]}"/>
+                    <field name="state" widget="statusbar" nolabel="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="buy_price"/>
+                            <field name="supplier_id"/>
+                        </group>
+                    </group>
+                </sheet>
             </form>
         </field>
     </record>

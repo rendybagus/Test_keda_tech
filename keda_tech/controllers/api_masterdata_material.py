@@ -18,6 +18,7 @@ class MasterdataMaterialControllerRestApi(http.Controller):
                 'type': material.type,
                 'buy_price': material.buy_price,
                 'supplier': material.supplier_id.name,
+                'state': material.state,
             } for material in materials]
 
             response_data = {
@@ -62,6 +63,7 @@ class MasterdataMaterialControllerRestApi(http.Controller):
                 'type': material.type,
                 'buy_price': material.buy_price,
                 'supplier': material.supplier_id.name,
+                'state': 'draft',
             }
 
             response_data = {
